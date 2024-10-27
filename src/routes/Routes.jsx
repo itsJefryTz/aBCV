@@ -11,7 +11,11 @@ export default function RoutesApp() {
                     </div>
                 }>
                 </Route>
-                <Route path="*" element={<div>404</div>}></Route>
+                <Route path="*" element={
+                    <div className="container mx-auto p-10 max-w-md">
+                        <Calculator />
+                    </div>
+                }></Route>
             </Routes>
         </BrowserRouter>
     )
