@@ -1,8 +1,9 @@
-# React + Vite
+# aBCV - Check the value of the dollar in a simple way.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Application created solely for the purpose of improving the experience when working with the dollar, without profit motives or anything beyond simply calculating the price of the dollar.
 
-Currently, two official plugins are available:
+• We are not responsible for any misuse of the site.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# ¿A que tasa estás cobrando? aBCV 😎
+
+It's that simple.
