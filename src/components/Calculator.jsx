@@ -146,7 +146,7 @@ export default function Calculator() {
         <div className='bg-gray-800 text-white p-4 rounded-md'>
             <h1 className='text-xl font-bold text-center'>aBCV - Calculadora</h1>
             <div className='text-center mb-2'>
-                <select onChange={ChangeSection} className="w-100 h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 text-gray-500 sm:text-sm">
+                <select onChange={ChangeSection} className="w-100 h-full rounded-md border-0  py-0 pl-2 pr-7 text-gray-500 sm:text-sm">
                     <option value="BCV">BCV</option>
                     <option value="Paralelo">Paralelo</option>
                     <option value="DollarParaleloToABCV">$ Paralelo a BCV</option>
