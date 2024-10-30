@@ -32,7 +32,7 @@ export default function Calculator() {
             setLastUpdated((ContextValue.paraleloData.last_update).replace(',', ' |'))
             setUsdAmount('1')
             setBsAmount(ContextValue.paraleloData.price)
-        } else if (sectionValue === 'DollarParaleloToABCV') {
+        } else if (sectionValue === 'Equivalent') {
             setUsdAmount('1')
             const result = (1 * ContextValue.paraleloData.price);
             setBsAmount(result);
@@ -56,7 +56,7 @@ export default function Calculator() {
             setBsAmount(truncateToTwoDecimals(dollarValue * ContextValue.bcvData.price).toString());
         } else if (section === 'Paralelo' && ContextValue.paraleloData.price) {
             setBsAmount(truncateToTwoDecimals(dollarValue * ContextValue.paraleloData.price).toString());
-        } else if (section === 'DollarParaleloToABCV' && ContextValue.paraleloData.price) {
+        } else if (section === 'Equivalent' && ContextValue.paraleloData.price) {
             const result = dollarValue * ContextValue.paraleloData.price;
             setBsAmount(truncateToTwoDecimals(result).toString());
             setDollarBcv(truncateToTwoDecimals(result / ContextValue.bcvData.price).toString());
@@ -70,7 +70,7 @@ export default function Calculator() {
             setUsdAmount(truncateToTwoDecimals(bsValue / ContextValue.bcvData.price).toString());
         } else if (section === 'Paralelo' && ContextValue.paraleloData.price) {
             setUsdAmount(truncateToTwoDecimals(bsValue / ContextValue.paraleloData.price).toString());
-        } else if (section === 'DollarParaleloToABCV' && ContextValue.paraleloData.price) {
+        } else if (section === 'Equivalent' && ContextValue.paraleloData.price) {
             setDollarBcv(bsValue);
             const result = truncateToTwoDecimals((bsValue * ContextValue.bcvData.price) / ContextValue.paraleloData.price);
             setUsdAmount(result.toString());
@@ -87,7 +87,7 @@ export default function Calculator() {
     };     
 
     const sectionCalculator = () => {
-        if (section === 'DollarParaleloToABCV') {
+        if (section === 'Equivalent') {
             return (
                 <>
                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -154,7 +154,7 @@ export default function Calculator() {
                 <select onChange={ChangeSection} className="w-100 h-full rounded-md border-0  py-0 pl-2 pr-7 text-gray-500 sm:text-sm">
                     <option value="BCV">BCV</option>
                     <option value="Paralelo">Paralelo</option>
-                    <option value="DollarParaleloToABCV">$ Paralelo a BCV</option>
+                    <option value="Equivalent">Equivalentes</option>
                 </select> <br />
             </div>
             {sectionCalculator()}
@@ -162,6 +162,9 @@ export default function Calculator() {
                 ÚLTIMA ACTUALIZACIÓN <br />
                 {lastUpdated ? lastUpdated : ''}
             </p>
+        </div>
+        <div className='text-center text-gray-500'>
+            <a href="https://github.com/itsJefryTz/aBCV" target='_blank'><i className="bi bi-github"></i></a>
         </div>
         </>
     );
