@@ -142,6 +142,7 @@ export default function Calculator() {
 
     return (
         <>
+        <p className='text-gray-500 text-sm mt-3 text-center'>Pruébala gratis en: www.abcv.vercel.app</p>
         <div className='bg-gray-800 text-white p-4 rounded-md'>
             <h1 className='text-xl font-bold text-center'>aBCV - Calculadora</h1>
             <div className='text-center mb-2'>
