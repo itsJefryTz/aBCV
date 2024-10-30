@@ -45,46 +45,31 @@ export default function Calculator() {
         if (section === 'DollarParaleloToABCV') {
             return (
                 <>
-                    <div>
-                        <div className="relative mt-2 rounded-md shadow-sm">
-                            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                <span className="text-gray-900 sm:text-sm">$</span>
-                            </div>
-                            <input id="price" type="number" step="0.01" placeholder="0.00" value={ContextValue.usdAmount} onChange={handleDollarChange} className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
-                            <div className="absolute inset-y-0 right-0 flex items-center">
-                                <label htmlFor="currency" className="sr-only">Currency</label>
-                                <select disabled id="currency" className="h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
-                                    <option>USD PARALELO</option>
-                                </select>
-                            </div>
+                    <div className="relative mt-2 rounded-md shadow-sm">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                            <span className="text-gray-500 sm:text-sm">$</span>
+                        </div>
+                        <input type="number" step="0.01" value={ContextValue.usdAmount} onChange={handleDollarChange} className="block w-full rounded-md border-0 py-1.5 pl-10 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                            <span className="text-gray-500 sm:text-sm">USD PARALELO</span>
                         </div>
                     </div>
-                    <div>
-                        <div className="relative mt-2 rounded-md shadow-sm">
-                            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                <span className="text-gray-900 sm:text-sm">$</span>
-                            </div>
-                            <input id="price" type="number" step="0.01" placeholder="0.00" value={dollarBcv} onChange={handleBsChange} className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
-                            <div className="absolute inset-y-0 right-0 flex items-center">
-                                <label htmlFor="currency" className="sr-only">Currency</label>
-                                <select disabled id="currency" className="h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
-                                    <option>USD BCV</option>
-                                </select>
-                            </div>
+                    <div className="relative mt-2 rounded-md shadow-sm">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                            <span className="text-gray-500 sm:text-sm">$</span>
+                        </div>
+                        <input type="number" step="0.01" value={dollarBcv} onChange={handleBsChange} className="block w-full rounded-md border-0 py-1.5 pl-10 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                            <span className="text-gray-500 sm:text-sm">USD BCV</span>
                         </div>
                     </div>
-                    <div>
-                        <div className="relative mt-2 rounded-md shadow-sm">
-                            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                <span className="text-gray-900 sm:text-sm">Bs</span>
-                            </div>
-                            <input disabled id="price" type="number" step="0.01" placeholder="0.00" value={ContextValue.bsAmount} className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
-                            <div className="absolute inset-y-0 right-0 flex items-center">
-                                <label htmlFor="currency" className="sr-only">Currency</label>
-                                <select disabled id="currency" className="h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 text-gray-900 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
-                                    <option>BS (TASA BCV)</option>
-                                </select>
-                            </div>
+                    <div className="relative mt-2 rounded-md shadow-sm">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                            <span className="text-gray-900 sm:text-sm">Bs.</span>
+                        </div>
+                        <input type="number" step="0.01" value={ContextValue.bsAmount} disabled className="block w-full rounded-md border-0 py-1.5 pl-10 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                            <span className="text-gray-900 sm:text-sm">BS. (TASA BCV)</span>
                         </div>
                     </div>
                 </>
@@ -92,32 +77,22 @@ export default function Calculator() {
         } else {
             return (
                 <>
-                    <div>
-                        <div className="relative mt-2 rounded-md shadow-sm">
-                            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                <span className="text-gray-900 sm:text-sm">$</span>
-                            </div>
-                            <input id="price" type="number" step="0.01" placeholder="0.00" value={ContextValue.usdAmount} onChange={handleDollarChange} className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
-                            <div className="absolute inset-y-0 right-0 flex items-center">
-                                <label htmlFor="currency" className="sr-only">Currency</label>
-                                <select disabled id="currency" className="h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
-                                    <option>USD</option>
-                                </select>
-                            </div>
+                    <div className="relative mt-2 rounded-md shadow-sm">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                            <span className="text-gray-500 sm:text-sm">$</span>
+                        </div>
+                        <input type="number" step="0.01" value={ContextValue.usdAmount} onChange={handleDollarChange} className="block w-full rounded-md border-0 py-1.5 pl-10 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                            <span className="text-gray-500 sm:text-sm">USD</span>
                         </div>
                     </div>
-                    <div>
-                        <div className="relative mt-2 rounded-md shadow-sm">
-                            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                <span className="text-gray-900 sm:text-sm">Bs</span>
-                            </div>
-                            <input id="price" type="number" step="0.01" placeholder="0.00" value={ContextValue.bsAmount} onChange={handleBsChange} className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
-                            <div className="absolute inset-y-0 right-0 flex items-center">
-                                <label htmlFor="currency" className="sr-only">Currency</label>
-                                <select disabled id="currency" className="h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
-                                    <option>BS</option>
-                                </select>
-                            </div>
+                    <div className="relative mt-2 rounded-md shadow-sm">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                            <span className="text-gray-500 sm:text-sm">Bs.</span>
+                        </div>
+                        <input type="number" step="0.01" value={ContextValue.bsAmount} onChange={handleBsChange} className="block w-full rounded-md border-0 py-1.5 pl-10 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                            <span className="text-gray-500 sm:text-sm">BS.</span>
                         </div>
                     </div>
                 </>
