@@ -163,7 +163,7 @@ export default function Calculator() {
                 {lastUpdated ? lastUpdated : ''}
             </p>
         </div>
-        <div className='text-center text-gray-500'>
+        <div className='text-center text-gray-500 mt-1'>
             <a href="https://github.com/itsJefryTz/aBCV" target='_blank'><i className="bi bi-github"></i></a>
         </div>
         </>
