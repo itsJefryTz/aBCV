@@ -44,22 +44,20 @@ export default function Calculator() {
     };
 
     const truncateToTwoDecimals = (value) => {
-        // Asegúrate de que el valor sea un número
         const number = parseFloat(value);
         if (isNaN(number)) return '0.00';
-        return Math.floor(number * 100) / 100;
-    };
+        return (Math.floor(number * 100) / 100).toFixed(2);
+    };    
 
     const handleDollarChange = (e) => {
         const dollarValue = e.target.value.replace(',', '.');
-        const truncatedDollarValue = truncateToTwoDecimals(dollarValue);
-        setUsdAmount(truncatedDollarValue.toString());
+        setUsdAmount(dollarValue);
         if (section === 'BCV' && ContextValue.bcvData.price) {
-            setBsAmount(truncateToTwoDecimals(truncatedDollarValue * ContextValue.bcvData.price).toString());
+            setBsAmount(truncateToTwoDecimals(dollarValue * ContextValue.bcvData.price).toString());
         } else if (section === 'Paralelo' && ContextValue.paraleloData.price) {
-            setBsAmount(truncateToTwoDecimals(truncatedDollarValue * ContextValue.paraleloData.price).toString());
+            setBsAmount(truncateToTwoDecimals(dollarValue * ContextValue.paraleloData.price).toString());
         } else if (section === 'DollarParaleloToABCV' && ContextValue.paraleloData.price) {
-            const result = truncatedDollarValue * ContextValue.paraleloData.price;
+            const result = dollarValue * ContextValue.paraleloData.price;
             setBsAmount(truncateToTwoDecimals(result).toString());
             setDollarBcv(truncateToTwoDecimals(result / ContextValue.bcvData.price).toString());
         }
@@ -67,19 +65,26 @@ export default function Calculator() {
     
     const handleBsChange = (e) => {
         const bsValue = e.target.value.replace(',', '.');
-        const truncatedBsValue = truncateToTwoDecimals(bsValue);
-        setBsAmount(truncatedBsValue.toString());
+        setBsAmount(bsValue);
         if (section === 'BCV' && ContextValue.bcvData.price) {
-            setUsdAmount(truncateToTwoDecimals(truncatedBsValue / ContextValue.bcvData.price).toString());
+            setUsdAmount(truncateToTwoDecimals(bsValue / ContextValue.bcvData.price).toString());
         } else if (section === 'Paralelo' && ContextValue.paraleloData.price) {
-            setUsdAmount(truncateToTwoDecimals(truncatedBsValue / ContextValue.paraleloData.price).toString());
+            setUsdAmount(truncateToTwoDecimals(bsValue / ContextValue.paraleloData.price).toString());
         } else if (section === 'DollarParaleloToABCV' && ContextValue.paraleloData.price) {
-            setDollarBcv(truncatedBsValue.toString());
-            const result = truncateToTwoDecimals((truncatedBsValue * ContextValue.bcvData.price) / ContextValue.paraleloData.price);
+            setDollarBcv(bsValue);
+            const result = truncateToTwoDecimals((bsValue * ContextValue.bcvData.price) / ContextValue.paraleloData.price);
             setUsdAmount(result.toString());
-            setBsAmount(truncateToTwoDecimals(truncatedBsValue * ContextValue.bcvData.price).toString());
+            setBsAmount(truncateToTwoDecimals(bsValue * ContextValue.bcvData.price).toString());
         }
     };
+    
+    const handleDollarBlur = () => {
+        setUsdAmount((prev) => truncateToTwoDecimals(prev).toString());
+    };
+    
+    const handleBsBlur = () => {
+        setBsAmount((prev) => truncateToTwoDecimals(prev).toString());
+    };     
 
     const sectionCalculator = () => {
         if (section === 'DollarParaleloToABCV') {
@@ -89,7 +94,7 @@ export default function Calculator() {
                         <button onClick={() => navigator.clipboard.writeText(usdAmount)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
-                        <input type="number" step="0.01" value={usdAmount} onChange={handleDollarChange} className="focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <input type="number" step="0.01" min="0" value={usdAmount} onChange={handleDollarChange} onBlur={handleDollarBlur} className="focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
                         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                             <span className="text-gray-500 sm:text-sm">USD PARALELO</span>
                         </div>
@@ -98,7 +103,7 @@ export default function Calculator() {
                         <button onClick={() => navigator.clipboard.writeText(dollarBcv)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
-                        <input type="number" step="0.01" value={dollarBcv} onChange={handleBsChange} className="focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <input type="number" step="0.01" min="0" value={dollarBcv} onChange={handleBsChange} onBlur={handleBsBlur} className="focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
                         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                             <span className="text-gray-500 sm:text-sm">USD BCV</span>
                         </div>
@@ -107,7 +112,7 @@ export default function Calculator() {
                         <button onClick={() => navigator.clipboard.writeText(bsAmount)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
-                        <input type="number" step="0.01" value={bsAmount} readOnly className="focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <input type="number" step="0.01" min="0" value={bsAmount} readOnly className="focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
                         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                             <span className="text-gray-500 sm:text-sm">BS. (TASA BCV)</span>
                         </div>
@@ -121,7 +126,7 @@ export default function Calculator() {
                         <button onClick={() => navigator.clipboard.writeText(usdAmount)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
-                        <input type="number" step="0.01" value={usdAmount} onChange={handleDollarChange} className="focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <input type="number" step="0.01" min="0" value={usdAmount} onChange={handleDollarChange} onBlur={handleDollarBlur} className="focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
                         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                             <span className="text-gray-500 sm:text-sm">USD</span>
                         </div>
@@ -130,7 +135,7 @@ export default function Calculator() {
                         <button onClick={() => navigator.clipboard.writeText(bsAmount)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
-                        <input type="number" step="0.01" value={bsAmount} onChange={handleBsChange} className="focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <input type="number" step="0.01" min="0" value={bsAmount} onChange={handleBsChange} onBlur={handleBsChange} className="focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
                         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                             <span className="text-gray-500 sm:text-sm">BS.</span>
                         </div>
