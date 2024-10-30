@@ -7,3 +7,6 @@ Application created solely for the purpose of improving the experience when work
 # ¿A que tasa estás cobrando? aBCV 😎
 
 It's that simple.
+
+# Try it for free at:
+www.abcv.vercel.app
