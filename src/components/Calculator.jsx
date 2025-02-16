@@ -1,4 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+
 import { Context } from '../context/Context';
 
 export default function Calculator() {
@@ -50,7 +52,7 @@ export default function Calculator() {
             setLastUpdated(ContextValue.bcvData.last_update + ' | ' + ContextValue.promedioData.last_update + ' | ' + ContextValue.paraleloData.last_update);
         }
         setSection(sectionValue);
-        setUsdAmount('1');
+        // setUsdAmount('1');
     };
 
     const truncateToTwoDecimals = (value) => {
@@ -130,14 +132,24 @@ export default function Calculator() {
     
     const handleBsBlur = () => {
         setBsAmount((prev) => truncateToTwoDecimals(prev).toString());
-    };     
+    };
+
+    function ReactHotToastNotification_valueCopiedSuccessfully(value) {
+        navigator.clipboard.writeText(value)
+            .then(() => {
+                toast.success('¡Copiado en el portapapeles!')
+            })
+            .catch((error) => {
+                console.error("Error al copiar al portapapeles:", error);
+            });
+      }
 
     const sectionCalculator = () => {
         if (section === 'Equivalent') {
             return (
                 <>
                     <div className="relative mt-2 rounded-md shadow-sm">
-                        <button onClick={() => navigator.clipboard.writeText(usdAmountBcv)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
+                        <button onClick={() => ReactHotToastNotification_valueCopiedSuccessfully(usdAmountBcv)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
                         <input type="number" step="0.01" min="0" value={usdAmountBcv} name="equivalentInputBcv" onChange={handleInputChangeEquivalent} onBlur={handleDollarBlur} className="rounded-l-md focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
@@ -146,7 +158,7 @@ export default function Calculator() {
                         </div>
                     </div>
                     <div className="relative mt-2 rounded-md shadow-sm">
-                        <button onClick={() => navigator.clipboard.writeText(usdAmountPromedio)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
+                        <button onClick={() => ReactHotToastNotification_valueCopiedSuccessfully(usdAmountPromedio)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
                         <input type="number" step="0.01" min="0" value={usdAmountPromedio} name="equivalentInputPromedio" onChange={handleInputChangeEquivalent} onBlur={handleDollarBlur} className="rounded-l-md focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
@@ -155,7 +167,7 @@ export default function Calculator() {
                         </div>
                     </div>
                     <div className="relative mt-2 rounded-md shadow-sm">
-                        <button onClick={() => navigator.clipboard.writeText(usdAmountParalelo)} className="rounded-l-md absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 text-gray-700 sm:text-sm">
+                        <button onClick={() => ReactHotToastNotification_valueCopiedSuccessfully(usdAmountParalelo)} className="rounded-l-md absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
                         <input type="number" step="0.01" min="0" value={usdAmountParalelo} name="equivalentInputParalelo" onChange={handleInputChangeEquivalent} onBlur={handleDollarBlur} className="rounded-l-md focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
@@ -164,7 +176,7 @@ export default function Calculator() {
                         </div>
                     </div>
                     <div className="relative mt-2 rounded-md shadow-sm">
-                        <button onClick={() => navigator.clipboard.writeText(bsAmount)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
+                        <button onClick={() => ReactHotToastNotification_valueCopiedSuccessfully(bsAmount)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
                         <input type="number" step="0.01" min="0" value={bsAmount} onChange={handleBsChange} onBlur={handleBsBlur} className="rounded-l-md focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
@@ -178,7 +190,7 @@ export default function Calculator() {
             return (
                 <>
                     <div className="relative mt-2 rounded-md shadow-sm">
-                        <button onClick={() => navigator.clipboard.writeText(section === 'BCV' ? usdAmountBcv : section === 'Promedio' ? usdAmountPromedio : usdAmountParalelo)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
+                        <button onClick={() => ReactHotToastNotification_valueCopiedSuccessfully(section === 'BCV' ? usdAmountBcv : section === 'Promedio' ? usdAmountPromedio : usdAmountParalelo)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
                         <input type="number" step="0.01" min="0" value={section === 'BCV' ? usdAmountBcv : section === 'Promedio' ? usdAmountPromedio : usdAmountParalelo} onChange={handleDollarChange} onBlur={handleDollarBlur} className="rounded-l-md focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
@@ -187,7 +199,7 @@ export default function Calculator() {
                         </div>
                     </div>
                     <div className="relative mt-2 rounded-md shadow-sm">
-                        <button onClick={() => navigator.clipboard.writeText(bsAmount)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
+                        <button onClick={() => ReactHotToastNotification_valueCopiedSuccessfully(bsAmount)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
                         <input type="number" step="0.01" min="0" value={bsAmount} onChange={handleBsChange} onBlur={handleBsBlur} className="rounded-l-md focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
