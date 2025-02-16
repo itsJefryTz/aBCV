@@ -6,15 +6,17 @@ export const Context = createContext()
 export default function ContextProvider(props) {
     const [data, setData] = useState({});
     const [bcvData, setBcvData] = useState({});
+    const [promedioData, setPromedioData] = useState({});
     const [paraleloData, setParaleloData] = useState({});
 
     useEffect(() => {
-        fetch('https://pydolarve.org/api/v1/dollar?page=alcambio')
+        fetch('https://pydolarve.org/api/v1/dollar?page=criptodolar')
             .then(response => response.json())
             .then(data => {
                 setData(data);
                 if (data.monitors && data.monitors.bcv) {
                     setBcvData(data.monitors.bcv);
+                    setPromedioData(data.monitors.promedio);
                     setParaleloData(data.monitors.enparalelovzla);
                 }
             })
@@ -23,7 +25,9 @@ export default function ContextProvider(props) {
 
     return (
         <Context.Provider value={{
-            data, setData, bcvData, setBcvData,
+            data, setData,
+            bcvData, setBcvData,
+            promedioData, setPromedioData,
             paraleloData, setParaleloData
         }}>
             {props.children}
