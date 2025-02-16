@@ -152,7 +152,7 @@ export default function Calculator() {
                         <button onClick={() => ReactHotToastNotification_valueCopiedSuccessfully(usdAmountBcv)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
-                        <input type="number" step="0.01" min="0" value={usdAmountBcv} name="equivalentInputBcv" onChange={handleInputChangeEquivalent} onBlur={handleDollarBlur} className="rounded-l-md focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <input type="number" step="0.01" min="0" value={usdAmountBcv} name="equivalentInputBcv" onChange={handleInputChangeEquivalent} onBlur={handleDollarBlur} className="rounded-l-md focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
                         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                             <span className="text-gray-500 sm:text-sm">USD BCV</span>
                         </div>
@@ -161,7 +161,7 @@ export default function Calculator() {
                         <button onClick={() => ReactHotToastNotification_valueCopiedSuccessfully(usdAmountPromedio)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
-                        <input type="number" step="0.01" min="0" value={usdAmountPromedio} name="equivalentInputPromedio" onChange={handleInputChangeEquivalent} onBlur={handleDollarBlur} className="rounded-l-md focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <input type="number" step="0.01" min="0" value={usdAmountPromedio} name="equivalentInputPromedio" onChange={handleInputChangeEquivalent} onBlur={handleDollarBlur} className="rounded-l-md focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
                         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                             <span className="text-gray-500 sm:text-sm">USD PROMEDIO</span>
                         </div>
@@ -170,7 +170,7 @@ export default function Calculator() {
                         <button onClick={() => ReactHotToastNotification_valueCopiedSuccessfully(usdAmountParalelo)} className="rounded-l-md absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
-                        <input type="number" step="0.01" min="0" value={usdAmountParalelo} name="equivalentInputParalelo" onChange={handleInputChangeEquivalent} onBlur={handleDollarBlur} className="rounded-l-md focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <input type="number" step="0.01" min="0" value={usdAmountParalelo} name="equivalentInputParalelo" onChange={handleInputChangeEquivalent} onBlur={handleDollarBlur} className="rounded-l-md focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
                         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                             <span className="text-gray-500 sm:text-sm">USD PARALELO</span>
                         </div>
@@ -179,7 +179,7 @@ export default function Calculator() {
                         <button onClick={() => ReactHotToastNotification_valueCopiedSuccessfully(bsAmount)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
-                        <input type="number" step="0.01" min="0" value={bsAmount} onChange={handleBsChange} onBlur={handleBsBlur} className="rounded-l-md focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <input type="number" step="0.01" min="0" value={bsAmount} onChange={handleBsChange} onBlur={handleBsBlur} className="rounded-l-md focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
                         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                             <span className="text-gray-500 sm:text-sm">BS.</span>
                         </div>
@@ -193,7 +193,7 @@ export default function Calculator() {
                         <button onClick={() => ReactHotToastNotification_valueCopiedSuccessfully(section === 'BCV' ? usdAmountBcv : section === 'Promedio' ? usdAmountPromedio : usdAmountParalelo)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
-                        <input type="number" step="0.01" min="0" value={section === 'BCV' ? usdAmountBcv : section === 'Promedio' ? usdAmountPromedio : usdAmountParalelo} onChange={handleDollarChange} onBlur={handleDollarBlur} className="rounded-l-md focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <input type="number" step="0.01" min="0" value={section === 'BCV' ? usdAmountBcv : section === 'Promedio' ? usdAmountPromedio : usdAmountParalelo} onChange={handleDollarChange} onBlur={handleDollarBlur} className="rounded-l-md focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
                         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                             <span className="text-gray-500 sm:text-sm">USD</span>
                         </div>
@@ -202,7 +202,7 @@ export default function Calculator() {
                         <button onClick={() => ReactHotToastNotification_valueCopiedSuccessfully(bsAmount)} className="absolute inset-y-0 left-0 flex items-center bg-gray-200 px-3 rounded-l-md text-gray-700 sm:text-sm">
                             <i className="bi bi-copy"></i>
                         </button>
-                        <input type="number" step="0.01" min="0" value={bsAmount} onChange={handleBsChange} onBlur={handleBsBlur} className="rounded-l-md focus:ring-0 focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                        <input type="number" step="0.01" min="0" value={bsAmount} onChange={handleBsChange} onBlur={handleBsBlur} className="rounded-l-md focus:outline-none focus:border-gray-300 block w-full rounded-r-md border-0 py-1.5 pl-12 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
                         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                             <span className="text-gray-500 sm:text-sm">BS.</span>
                         </div>
@@ -214,6 +214,7 @@ export default function Calculator() {
 
     return (
         <>
+        <img src='/src/assets/img/banner.png' className='mb-5 rounded-md shadow-sm'></img>
         <div className='bg-gray-800 text-white p-4 rounded-md'>
             <h1 className='text-xl font-bold text-center'>aBCV - Calculadora</h1>
             <p className='text-gray-500 text-sm mb-3 text-center'>Pruébala gratis en: abcv.vercel.app</p>
