@@ -214,7 +214,7 @@ export default function Calculator() {
 
     return (
         <>
-        <img src='/src/assets/img/banner.png' className='mb-5 rounded-md shadow-sm'></img>
+        <img src='../assets/img/banner.png' className='mb-5 rounded-md shadow-sm'></img>
         <div className='bg-gray-800 text-white p-4 rounded-md'>
             <h1 className='text-xl font-bold text-center'>aBCV - Calculadora</h1>
             <p className='text-gray-500 text-sm mb-3 text-center'>Pruébala gratis en: abcv.vercel.app</p>
